@@ -1,4 +1,5 @@
-FROM golang:1.18.4-bullseye AS builder
+ARG IMAGE_TAG=1.20-bullseye
+FROM amd64/golang:${IMAGE_TAG} AS builder
 COPY . $GOPATH/src/github.com/combor/k8s-mongo-primary-sidecar/
 WORKDIR $GOPATH/src/github.com/combor/k8s-mongo-primary-sidecar/
 RUN CGO_ENABLED=0 go build -o /primary-sidecar
